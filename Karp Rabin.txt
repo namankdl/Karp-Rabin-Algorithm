@@ -1,0 +1,30 @@
+import java.lang.Math;
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    String s1=sc.nextLine();
+    String patt=sc.nextLine();
+    double hash=0;
+    double hash1=0;
+    int n=patt.length();
+    for(int i=0;i<n;i++)
+    {
+      hash=hash+patt.charAt(i)*Math.pow(13,i+1);
+      hash1=hash1+s1.charAt(i)*Math.pow(13,i+1);
+    }
+    for(int i=1;i<s1.length()-n;i++)
+    {
+      if(hash==hash1)
+      {
+        System.out.println("pattern found at "+i);
+        break;
+      }
+      hash1=hash1/13;
+       hash1=hash1-s1.charAt(i-1);
+      hash1=hash1+s1.charAt(n+i-1)*Math.pow(13,n);
+     
+      
+    }
+  }
+}
